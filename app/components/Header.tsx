@@ -14,11 +14,11 @@ export default function Header() {
                             alt="logo"
                         />
                     </Link>
-                    <h1>The ultimate blog</h1>
+                    <h1>Planète Codeur</h1>
             </div>
             <div>
                     <Link href="signin" className="px-5 py-3 text-sm md:text-base bg-gray-900 text-[#F7AB0A] flex items-center rounded-full text-center">
-                            Join the team
+                            Rejoindre Le Groupe
                     </Link>
             </div>
     </header>

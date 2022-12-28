@@ -1,7 +1,9 @@
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
+import Link from "next/link"
 import { Post } from "../../typings"
 import urlFor from "../../utils/urlFor"
+import PostContainer from "./PostContainer"
 
 type Props = {
     posts:Post[]
@@ -14,6 +16,7 @@ export default function BlogList({posts}:Props) {
         <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
            {posts.map((post) => (
                 <div key={post._id} className="flex flex-col cursor-pointer group">
+                    <PostContainer url={`post/${post.slug.current}`}>
                     <div className="relative w-full h-80 drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
                         <Image
                           className="object-cover object-left lg:object-center"
@@ -44,14 +47,15 @@ export default function BlogList({posts}:Props) {
                             </div>
                         </div>
                     </div>
+                    </PostContainer>
                     <div className="mt-5 flex-1">
                         <p className="underline text-lg font-bold"> {post.title} </p>
-                        <p className="text-gray-500 line-clamp-2"> {post.body[0].children[0].text} </p>
+                        <p className="text-gray-500 line-clamp-2"> {post.description} </p>
                     </div>
-                    <p className="mt- font-bold flex items-center group-hover:underline"> 
+                    <Link href={`post/${post.slug.current}`} className="mt- font-bold flex items-center group-hover:underline"> 
                         Lire l'article
                         <ArrowUpRightIcon className="ml-2 h-4 w-4"/>
-                    </p>
+                    </Link>
                 </div>
             ))}
            </div>
